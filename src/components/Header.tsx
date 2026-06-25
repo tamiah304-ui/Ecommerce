@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
-import { Link, navigate } from "../router";
+import { Link, navigate, useRoute, parseRoute } from "../router";
 import { useStore } from "../store/StoreContext";
 import { CATEGORIES } from "../data/products";
 import { Container } from "./ui";
 
 export function Header() {
   const { cartCount, state } = useStore();
+  const route = useRoute();
+  const { parts } = parseRoute(route);
+  const currentPath = parts[0] ?? "";
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
@@ -29,6 +32,12 @@ export function Header() {
     { to: "/contact", label: "Contact" },
     { to: "/track", label: "Track Order" },
   ];
+
+  const isActive = (to: string) => {
+    if (to === "/track" && currentPath === "track") return true;
+    const linkPath = to.replace("/", "");
+    return linkPath === currentPath;
+  };
 
   return (
     <header
@@ -72,10 +81,16 @@ export function Header() {
             <Link
               key={l.to}
               to={l.to}
-              className="group relative font-body text-[13px] font-semibold uppercase tracking-[0.12em] text-brand-primary transition-colors hover:text-brand-secondary"
+              className={`group relative font-body text-[13px] font-semibold uppercase tracking-[0.12em] transition-colors ${
+                isActive(l.to)
+                  ? "text-brand-secondary"
+                  : "text-brand-primary hover:text-brand-secondary"
+              }`}
             >
               {l.label}
-              <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-brand-secondary transition-all duration-300 group-hover:w-full" />
+              <span className={`absolute -bottom-0.5 left-0 h-px bg-brand-secondary transition-all duration-300 ${
+                isActive(l.to) ? "w-full" : "w-0 group-hover:w-full"
+              }`} />
             </Link>
           ))}
         </nav>
@@ -158,7 +173,11 @@ export function Header() {
                 key={l.to}
                 to={l.to}
                 onClick={() => setOpen(false)}
-                className="rounded-sm px-3 py-2.5 text-sm font-semibold uppercase tracking-wider text-brand-primary hover:bg-warm-beige"
+                className={`rounded-sm px-3 py-2.5 text-sm font-semibold uppercase tracking-wider transition-colors ${
+                  isActive(l.to)
+                    ? "bg-brand-secondary text-white"
+                    : "text-brand-primary hover:bg-warm-beige"
+                }`}
               >
                 {l.label}
               </Link>
