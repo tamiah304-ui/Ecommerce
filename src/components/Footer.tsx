@@ -31,7 +31,7 @@ export function Footer() {
                 placeholder="Your email address"
                 className="w-full rounded-l-sm bg-white/10 px-4 py-3 text-xs text-white placeholder-gray-400 outline-none transition-colors focus:bg-white/15"
               />
-              <button className="rounded-r-sm bg-brand-secondary px-6 text-[11px] font-bold uppercase tracking-[0.12em] text-brand-primary transition-colors hover:bg-white">
+              <button className="rounded-r-sm bg-brand-secondary px-6 text-[11px] font-bold uppercase tracking-[0.12em] text-white transition-colors hover:bg-brand-accent">
                 Subscribe
               </button>
             </form>
@@ -42,7 +42,7 @@ export function Footer() {
       <Container className="py-12">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           <div>
-            <h4 className="mb-4 text-[11px] font-bold uppercase tracking-[0.15em] text-brand-secondary">Quick Links</h4>
+            <h4 className="mb-4 text-[11px] font-bold uppercase tracking-[0.15em] text-brand-orange">Quick Links</h4>
             <ul className="space-y-2.5 text-xs text-gray-400">
               <li><Link to="/shop" className="transition-colors hover:text-white">Shop All</Link></li>
               <li><Link to="/about" className="transition-colors hover:text-white">About Us</Link></li>
@@ -51,7 +51,7 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h4 className="mb-4 text-[11px] font-bold uppercase tracking-[0.15em] text-brand-secondary">Categories</h4>
+            <h4 className="mb-4 text-[11px] font-bold uppercase tracking-[0.15em] text-brand-orange">Categories</h4>
             <ul className="space-y-2.5 text-xs text-gray-400">
               {CATEGORIES.slice(0, 6).map((c) => (
                 <li key={c.slug}>
@@ -61,7 +61,7 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h4 className="mb-4 text-[11px] font-bold uppercase tracking-[0.15em] text-brand-secondary">Customer Service</h4>
+            <h4 className="mb-4 text-[11px] font-bold uppercase tracking-[0.15em] text-brand-orange">Customer Service</h4>
             <ul className="space-y-2.5 text-xs text-gray-400">
               <li><a href="#/contact" className="transition-colors hover:text-white">Delivery Info</a></li>
               <li><a href="#/contact" className="transition-colors hover:text-white">Returns</a></li>
@@ -70,7 +70,7 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h4 className="mb-4 text-[11px] font-bold uppercase tracking-[0.15em] text-brand-secondary">Contact</h4>
+            <h4 className="mb-4 text-[11px] font-bold uppercase tracking-[0.15em] text-brand-orange">Contact</h4>
             <ul className="space-y-2.5 text-xs text-gray-400">
               <li>+254 720 784379</li>
               <li>info@nomanenobazaar.com</li>
